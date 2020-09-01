@@ -1,1 +1,64 @@
-<h1>Hola Mundo!!</h1>
+<h1>Hola Mundo!! {{title}}</h1>
+
+<p>{{1 + 1}}</p>
+
+<button (click)="changeTitle()">change</button>
+
+<input type="text" [(ngModel)]="rockBandName" (keydown.enter)="addRockBand()">{{ rockBandName }}
+<button (click)="addRockBand()">add</button>
+
+<ul>
+    <li *ngFor="let rockband of rockbands">
+        {{ rockband }}
+    </li>
+</ul>
+
+<br/>
+
+<button [disabled] = "botonStatus">Mi boton</button>
+
+<br/>
+
+<button [class.activo] = "isActive">Mi Boton a Colores</button>
+
+<br/>
+
+<button [style.borderColor] = "isActive ? 'green' : 'black'">Mi Boton a Colores 1</button>
+
+<br/>
+
+<input type="text" (keyup.enter) = "onKeyUp(nombre.value)" #nombre/>
+
+<br/>
+<input type="text" [(ngModel)] = "persona.nombre"/>
+<p>{{persona.nombre}}</p>
+
+
+<br/>
+<ul>
+    <li *ngFor="let persona of personas">
+        {{ persona.nombre }}
+    </li>
+</ul>
+
+
+<br/>
+<br/>
+<div class="container">
+    <form [formGroup]="miFormulario">
+        Usuario: <input [class.is-invalid]="miFormulario.get('username').touched && miFormulario.get('username').invalid" type="text" class="form-control" formControlName="username"><br/>
+        Password: <input [class.is-invalid]="miFormulario.get('userpassword').touched && miFormulario.get('userpassword').invalid" type="password" class="form-control" formControlName="userpassword"><br/>
+        <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
+    {{ miFormulario.value | json }}
+</div>
+
+<br/>
+<br/>
+
+<app-mensaje>
+    <h1>Hola Mundo</h1>
+    <button class="btn btn-primary">Hazme click</button>
+    <div>Este es un DIV</div>
+    <p>Mensaje desde el componente app</p>
+</app-mensaje>
